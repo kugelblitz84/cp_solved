@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+void solve(){
+    int n,m;
+    cin>>n>>m;
+    int arr[n];
+    for(auto &i:arr) cin>>i;
+    vector<int> dp(m+1);
+    dp[0]=1;
+    for(int i=1;i<=m;i++){
+        for(auto j:arr){
+            if(i-j>=0) dp[i]=dp[i]+dp[i-j];
+        }
+    }
+    cout<<dp[m]<<endl;
+    
+}
+ 
+int main(){
+        int t=1;
+        //cin>>t;
+        while(t--){
+            solve();
+        }
+ 
+    return 0;
+}
