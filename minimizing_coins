@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+void solve(){
+    int n,m;
+    cin>>n>>m;
+    int arr[n];
+    for(auto &i:arr) cin>>i;
+    vector<int> dp(m+1,1e9);
+    dp[0]=0;
+    for(int i=1;i<=m;i++){
+        for(auto j:arr){
+            if(j<=i){
+                dp[i]=min(dp[i],dp[i-j]+1);
+            }
+        }
+    }
+    cout<<(dp[m]==1e9 ? -1:dp[m]) <<endl;
+    
+}
+ 
+int main(){
+        int t=1;
+        //cin>>t;
+        while(t--){
+            solve();
+        }
+ 
+    return 0;
+}
