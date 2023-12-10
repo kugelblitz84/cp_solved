@@ -9,12 +9,13 @@ void solve(){
     for(auto &i:arr) cin>>i;
     vector<int> dp(m+1);
     dp[0]=1;
+    long long int mod=1e9+7;
     for(int i=1;i<=m;i++){
         for(auto j:arr){
-            if(i-j>=0) dp[i]=dp[i]+dp[i-j];
+            if(i-j>=0) dp[i]=(dp[i]+dp[i-j])%mod;
         }
     }
-    cout<<dp[m]<<endl;
+    cout<<dp[m]%mod<<endl;
     
 }
  
