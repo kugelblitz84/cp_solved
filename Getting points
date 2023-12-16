@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+using ll=long long int ;
+
+ll points(ll days,ll l,ll t,ll tasks){
+    return (days*l)+(min(2*days,tasks)*t);
+}
+void solve(){
+    ll n,p,l,t;
+    cin>>n>>p>>l>>t;
+    ll low=0;
+    ll high=n;
+    ll tasks=(n+6)/7;
+    while(high>1+low){
+        ll mid = (high+low)/2;
+        if(points(mid,l,t,tasks)>=p) high=mid;
+        else low=mid;
+    }
+    cout<<n-high<<endl;
+}
+int main(){
+
+    int t;
+    cin>>t;
+    while(t--) solve();
+    return 0;
+}
